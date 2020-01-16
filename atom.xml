@@ -2,21 +2,30 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hudesee.github.io</id>
     <title>hudese</title>
-    <updated>2019-11-16T04:59:44.171Z</updated>
+    <updated>2020-01-16T10:46:42.893Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hudesee.github.io"/>
     <link rel="self" href="https://hudesee.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>胡嘚瑟的个人博客</subtitle>
     <logo>https://hudesee.github.io/images/avatar.png</logo>
     <icon>https://hudesee.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, hudese</rights>
+    <rights>All rights reserved 2020, hudese</rights>
     <entry>
-        <title type="html"><![CDATA[完数]]></title>
-        <id>https://hudesee.github.io/post/wan-shu</id>
-        <link href="https://hudesee.github.io/post/wan-shu">
+        <title type="html"><![CDATA[三角矩阵的压缩矩阵]]></title>
+        <id>https://hudesee.github.io/post/san-jiao-ju-zhen-de-ya-suo-ju-zhen</id>
+        <link href="https://hudesee.github.io/post/san-jiao-ju-zhen-de-ya-suo-ju-zhen">
         </link>
-        <updated>2019-11-16T04:58:50.000Z</updated>
-        <content type="html"><![CDATA[<p>java<img src="https://hudesee.github.io/post-images/1573880372380.png" alt=""></p>
+        <updated>2020-01-16T10:43:02.000Z</updated>
+        <content type="html"><![CDATA[<p>三角矩阵的压缩矩阵</p>
+<p>首先三角矩阵的压缩矩阵<br>
+对角线上的元素加上对角线以下的元素，是我们要存储的元素，对角线上面的也是我们要存储的元素，不过他们是相同常数，因此我们可以把这些同样的常数，只要存储一个就可以了。<br>
+以上就是下三角矩阵，在一维数组中进行存储，下标k 的公式很好推导，我们利用数学中的等差数列就可以推导出来。(数组中元素最开始的下标为0)</p>
+<p>来说一下上三角矩阵，上三角矩阵在一维数组中存储的下<br>
+标公式。</p>
+<p>在这里插入图片描述<br>
+<img src="https://hudesee.github.io/post-images/1579171473625.jpg" alt=""><br>
+出现n 就是为了更好的方便计算，引入i,j是因为二维数组的下标。因为存储二维数组就是把二维数组中的元素存储到一维数组中，因此，i,j在公式中肯定是必不可少的。</p>
+<p>粗略见解，请多指教。</p>
 ]]></content>
     </entry>
 </feed>

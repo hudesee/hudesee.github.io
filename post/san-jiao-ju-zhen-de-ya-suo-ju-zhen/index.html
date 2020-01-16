@@ -1,0 +1,162 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>三角矩阵的压缩矩阵 | hudese</title>
+<meta name="description" content="胡嘚瑟的个人博客" />
+<link rel="shortcut icon" href="https://hudesee.github.io/favicon.ico?v=1579171593387">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://hudesee.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://hudesee.github.io">
+  <img class="avatar" src="https://hudesee.github.io/images/avatar.png?v=1579171593387" alt="">
+  </a>
+  <h1 class="site-title">
+    hudese
+  </h1>
+  <p class="site-description">
+    胡嘚瑟的个人博客
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              三角矩阵的压缩矩阵
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-01-16
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>三角矩阵的压缩矩阵</p>
+<p>首先三角矩阵的压缩矩阵<br>
+对角线上的元素加上对角线以下的元素，是我们要存储的元素，对角线上面的也是我们要存储的元素，不过他们是相同常数，因此我们可以把这些同样的常数，只要存储一个就可以了。<br>
+以上就是下三角矩阵，在一维数组中进行存储，下标k 的公式很好推导，我们利用数学中的等差数列就可以推导出来。(数组中元素最开始的下标为0)</p>
+<p>来说一下上三角矩阵，上三角矩阵在一维数组中存储的下<br>
+标公式。</p>
+<p>在这里插入图片描述<br>
+<img src="https://hudesee.github.io/post-images/1579171473625.jpg" alt=""><br>
+出现n 就是为了更好的方便计算，引入i,j是因为二维数组的下标。因为存储二维数组就是把二维数组中的元素存储到一维数组中，因此，i,j在公式中肯定是必不可少的。</p>
+<p>粗略见解，请多指教。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+   | 
+  <a class="rss" href="https://hudesee.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
