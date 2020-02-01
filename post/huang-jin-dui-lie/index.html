@@ -1,0 +1,225 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>黄金队列 | hudese</title>
+<meta name="description" content="胡嘚瑟的个人博客" />
+<link rel="shortcut icon" href="https://hudesee.github.io/favicon.ico?v=1580552413184">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://hudesee.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://hudesee.github.io">
+  <img class="avatar" src="https://hudesee.github.io/images/avatar.png?v=1580552413184" alt="">
+  </a>
+  <h1 class="site-title">
+    hudese
+  </h1>
+  <p class="site-description">
+    胡嘚瑟的个人博客
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              黄金队列
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-02-01
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>第三届蓝桥杯Java组 黄金队列</p>
+<p>Description</p>
+<p>黄金分割数0.618与美学有重要的关系。舞台上报幕员所站的位置大约就是舞台宽度的0.618处，墙上的画像一般也挂在房间高度的0.618处，甚至股票的波动据说也能找到0.618的影子....</p>
+<p>黄金分割数是个无理数，也就是无法表示为两个整数的比值。0.618只是它的近似值，其真值可以通过对5开方减去1再除以2来获得，我们取它的一个较精确的近似值：0.618034</p>
+<p>有趣的是，一些简单的数列中也会包含这个无理数，这很令数学家震惊！</p>
+<p>1 3 4 7 11 18 29 47 .... 称为“鲁卡斯队列”。它后面的每一个项都是前边两项的和。</p>
+<p>如果观察前后两项的比值，即：1/3 3/4 4/7 7/11 11/18 ... 会发现它越来越接近于黄金分割数！</p>
+<p>你的任务就是计算出从哪一项开始，这个比值四舍五入后已经达到了与0.618034一致的精度。</p>
+<p>请写出该比值。格式是：分子/分母。比如：29/47</p>
+<p>Input</p>
+<p>没有输入。</p>
+<p>Output</p>
+<p>输出比值四舍五入后达到了与0.618034一致精度的第一个分式。</p>
+<p>这个题需要用高精度的格式来写就需要用到 BigDecimal。<br>
+什么是BigDecimal呢？</p>
+<ul>
+<li></li>
+</ul>
+<blockquote>
+<p>Java在java.math包中提供的API类BigDecimal，用来对超过16位有效位的数进行精确的运算。双精度浮点型变量double可以处理16位有效数。在实际应用中，需要对更大或者更小的数进行运算和处理。float和double只能用来做科学计算或者是工程计算，在商业计算中要用java.math.BigDecimal。BigDecimal所创建的是对象，我们不能使用传统的+、-、*、/等算术运算符直接对其对象进行数学运算，而必须调用其相对应的方法。方法中的参数也必须是BigDecimal的对象。构造器是类的特殊方法，专门用来创建对象，特别是带有参数的对象。<br>
+<strong>以上来源于百度百科</strong></p>
+</blockquote>
+<ul>
+<li></li>
+</ul>
+<p>这个题呢很简单，仔细观察一下发现和 斐波那契数列 很相似，他们都是有规律的，前一项分子和分母的和等于 后面一项的分母，前一项的分母等于后一项的分子，当发现这个规律之后，这个题就迎刃而解了，只不过需要注意BigDecimal 的用法。</p>
+<pre><code class="language-java">import java.math.*;
+public class Main
+{
+	public static void main(String[] args) {
+		/*
+		 * 分子:numerator 分母:denominator
+		 */
+		BigDecimal golden = new BigDecimal(&quot;0.618034&quot;);//使用字符串不容易出错
+		BigDecimal numerator = new BigDecimal(&quot;1&quot;);
+		BigDecimal denominator = new BigDecimal(&quot;3&quot;);
+		BigDecimal temp = new BigDecimal(&quot;0&quot;);
+		while(true )
+		{	
+				if (golden.equals(numerator.divide(denominator, 6,BigDecimal.ROUND_HALF_UP ))) {
+				break ;
+				//BigDecimal.ROUND_HALF_UP  是四舍五入
+				
+			}
+			else {
+				
+				temp = numerator.add(denominator);
+				numerator = denominator;
+				denominator = temp;
+				
+			
+			}
+			
+			
+			
+		}
+		
+		System.out.println(numerator+ &quot;/&quot; +denominator);
+	}
+	
+}
+
+</code></pre>
+<p>粗略见解，请大家多多指教。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://hudesee.github.io/post/san-jiao-ju-zhen-de-ya-suo-ju-zhen">
+              <h3 class="post-title">
+                三角矩阵的压缩矩阵
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+   | 
+  <a class="rss" href="https://hudesee.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
