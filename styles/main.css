@@ -1993,7 +1993,28 @@ body {
       }
       .head-top-line {
         background: #000 !important;
-      }
+      }.sidebar {
+      background-image: url(\media\images\custom-siteMetaImg.jpg) !important;
+    }
+    .sidebar-item-box a {
+      color: #eee;
+    }
+    .friends-title {
+      color: #eee;
+      border-top: 1px dotted #fff;
+    }
+    .friends-box a {
+      color: #eee;
+      border-bottom: 1px solid #eee;
+    }
+    .toc-wrapper a {
+      color: #eee;
+      border-bottom: 1px solid #eee;
+    }
+    .sidebar-title-item {
+      color: #eee;
+    }
+    
     .brand {
       background: #000;
     }
@@ -2008,4 +2029,6 @@ body {
       background: #FFF;
     }.box-shadow-wrapper {
       padding: 10px;
+    }.box-shadow-wrapper {
+      box-shadow: none !important;
     }
