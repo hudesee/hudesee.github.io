@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hudesee.github.io</id>
     <title>hudese</title>
-    <updated>2020-02-21T02:29:54.840Z</updated>
+    <updated>2020-02-21T02:57:40.253Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hudesee.github.io"/>
     <link rel="self" href="https://hudesee.github.io/atom.xml"/>
@@ -16,18 +16,20 @@
         <link href="https://hudesee.github.io/post/guan-yu-wo/">
         </link>
         <updated>2020-02-20T10:53:12.000Z</updated>
-        <summary type="html"><![CDATA[<p>🏠 关于本站</p>
-<p>记录岁月在自己身上留下的痕迹<br>
-👨‍💻 博主是谁<br>
-⛹ 兴趣爱好</p>
+        <summary type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://hudesee.github.io/post-images/1582253828941.jpg" alt="" loading="lazy"></figure>
+<h2 id="关于本站">🏠 关于本站</h2>
+<p>记录一下自己的生活和学习经历，希望能变得更好。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>🏠 关于本站</p>
-<p>记录岁月在自己身上留下的痕迹<br>
-👨‍💻 博主是谁<br>
-⛹ 兴趣爱好</p>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://hudesee.github.io/post-images/1582253828941.jpg" alt="" loading="lazy"></figure>
+<h2 id="关于本站">🏠 关于本站</h2>
+<p>记录一下自己的生活和学习经历，希望能变得更好。</p>
 <!-- more -->
-<p>财富自由<br>
-📬 联系我呀</p>
+<h2 id="说给自己的话">👨‍💻 说给自己的话</h2>
+<p>大多数人又懒又笨，你只要做的比他们好一点，比他们更努力一点。你就可以超越大部分人。<br>
+你的自制力很差，你要自己学会远离一些诱惑。<br>
+希望你能变得越来越好。</p>
+<h2 id="找到我">📬 找到我</h2>
+<p>关注个人公众号 <strong>胡嘚瑟同学</strong></p>
 ]]></content>
     </entry>
     <entry>
