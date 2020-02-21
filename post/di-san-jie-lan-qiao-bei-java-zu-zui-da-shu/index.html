@@ -6,7 +6,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="胡嘚瑟的个人博客">
 <meta name="theme-color" content="#000">
-<title>三角矩阵的压缩矩阵 | hudese</title>
+<title>第三届蓝桥杯Java组 最大数 | hudese</title>
 <link rel="shortcut icon" href="https://hudesee.github.io/favicon.ico?v=1582275205266">
 <link rel="stylesheet" href="https://hudesee.github.io/styles/main.css">
 
@@ -25,7 +25,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
     onload="renderMathInElement(document.body);"></script>
 
-    <meta name="description" content="三角矩阵的压缩矩阵" />
+    <meta name="description" content="第三届蓝桥杯Java组 最大数" />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -131,9 +131,17 @@
 <div class="sidebar">
     <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
       
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
+          </div>
+        </div>
+      
       <div class="sidebar-body gemini" id="sidebar_body">
         
-          
+          <div class="post-side-meta" id="post_side_meta">
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="https://hudesee.github.io/images/avatar.png"/>
@@ -192,6 +200,183 @@
 
 
 </div>
+          </div>
+          <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+            <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto" id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%AC%AC%E4%B8%89%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AFjava%E7%BB%84-%E6%9C%80%E5%A4%A7%E6%95%B0">第三届蓝桥杯Java组 最大数</a></li>
+<li><a href="#description">Description</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF">思路</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1; 
+let active = 'active-show', activeClass = 'active-current';
+let tocWrapper = document.querySelector('#toc_wrapper');
+let tocContent = tocWrapper.children[0];
+let autoNumber = tocWrapper&&tocWrapper.classList.contains('auto-number');
+
+function addTocNumber(elem, deep) {
+  if (!elem) {
+    return;
+  }
+  let prop = elem.__proto__;
+
+  if (prop === HTMLUListElement.prototype) {
+    for (let i = 0; i < elem.children.length; i++) {
+      addTocNumber(elem.children[i], deep + (i + 1) + '.');
+    }
+  } else if (prop === HTMLLIElement.prototype) {
+    // 保存li元素
+    lList.push(elem);
+    for (let i = 0; i < elem.children.length; i++) {
+      let cur = elem.children[i];
+      if (cur.__proto__ === HTMLAnchorElement.prototype) {
+        if (autoNumber) {
+          cur.text =  deep + ' ' + cur.text;
+        }
+      } else if (cur.__proto__ === HTMLUListElement.prototype) {
+        addTocNumber(cur, deep);
+      }
+    }
+  }
+}
+
+
+document.addEventListener('scroll', function(e) {
+  if (lList.length <= 0) {
+    return;
+  }
+  let scrollTop = document.scrollingElement.scrollTop;
+  let dir;
+
+  if (lastTop - scrollTop > 0) {
+    dir = 'up';
+  } else {
+    dir = 'down';
+  }
+
+  lastTop = scrollTop;
+  if (scrollTop <= 0) {
+    if (lastIndex >= 0 && lastIndex < hList.length) {
+      lList[lastIndex].classList.remove(activeClass);
+    }
+    return;
+  }
+
+  let current = 0, hasFind = false;
+  for (let i = 0; i < hList.length; i++) {
+    if (hList[i].offsetTop > scrollTop) {
+      current = i;
+      hasFind = true;
+      break;
+    }
+  }
+  if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+    current = hList.length - 1;
+  } else {
+    current--;
+  }
+  if (dir === 'down') {
+    if (current > lastIndex) {
+      addActiveClass(current);
+      removeActiveClass(lastIndex) 
+      lastIndex = current;
+      removeParentActiveClass();
+      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
+    }
+  } else {
+    if (current < lastIndex) {
+      addActiveClass(current);
+      removeActiveClass(lastIndex);
+      lastIndex = current;
+      removeParentActiveClass();
+      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
+    }
+  }
+});
+
+function removeParentActiveClass() {
+  let parents = tocContent.querySelectorAll('.'+active)
+  parents.forEach(function(elem) {
+    elem.classList.remove(active);
+  });
+}
+
+function addActiveClass(index) {
+  if (index >= 0 && index < hList.length) {
+    lList[index].classList.add(activeClass);
+  }
+}
+
+function removeActiveClass(index) {
+  if (index >= 0 && index < hList.length) {
+    lList[index].classList.remove(activeClass);
+  }
+}
+
+function addActiveLiElemment(elem, parent) {
+  if (!elem || elem === parent) {
+    return;
+  } else {
+    if (elem.__proto__ === HTMLLIElement.prototype) {
+      elem.classList.add(active);
+    }
+    addActiveLiElemment(elem.parentElement, parent);
+  }
+}
+
+function showToc() {
+  if (tocWrapper) {
+    postBody = document.querySelector('#post_body');
+    for (let i = 0; i < postBody.children.length; i++) {
+      if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+        hList.push(postBody.children[i]);
+      }
+    }
+    if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+    } else if (tocWrapper.classList.contains('no_compress')){
+      tocContent.classList.add('expanded');
+    } else {
+      if (hList.length > 10) {
+        active = 'active-hidden'
+        tocContent.classList.add('closed');
+      } else {
+        tocContent.classList.add('expanded');
+      }
+    }
+  }
+}
+addTocNumber(tocContent, '');
+
+window.addEventListener('load', function() {
+  showToc();
+  document.querySelector('#sidebar').style='display: block;';
+  tocWrapper.classList.add('toc-active');
+  setTimeout(function() {
+    if ("createEvent" in document) {
+      let evt = document.createEvent("HTMLEvents");
+      evt.initEvent("scroll", false, true);
+      document.dispatchEvent(evt);
+    }
+    else {
+      document.fireEvent("scroll");
+    }
+  }, 500)
+})
+
+</script>
+          </div>
         
       </div>
     </div>
@@ -277,8 +462,8 @@
               <div class="article-box">
     <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://hudesee.github.io/post/san-jiao-ju-zhen-de-ya-suo-ju-zhen/">
-      三角矩阵的压缩矩阵
+    <a class="post-title-link" href="https://hudesee.github.io/post/di-san-jie-lan-qiao-bei-java-zu-zui-da-shu/">
+      第三届蓝桥杯Java组 最大数
     </a>
   </h1>
   <div class="post-meta">
@@ -286,33 +471,101 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-01-16</span>
+      <span>2020-02-21</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
+      <span>3分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>271<span class="pc-show">字数</span></span>
+      <span>735<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
 </div>
               <div class="post-body next-md-body" id="post_body">
-                <p>三角矩阵的压缩矩阵</p>
-<p>首先三角矩阵的压缩矩阵<br>
-对角线上的元素加上对角线以下的元素，是我们要存储的元素，对角线上面的也是我们要存储的元素，不过他们是相同常数，因此我们可以把这些同样的常数，只要存储一个就可以了。<br>
-以上就是下三角矩阵，在一维数组中进行存储，下标k 的公式很好推导，我们利用数学中的等差数列就可以推导出来。(数组中元素最开始的下标为0)</p>
-<p>来说一下上三角矩阵，上三角矩阵在一维数组中存储的下<br>
-标公式。</p>
-<p>在这里插入图片描述<br>
-<img src="https://hudesee.github.io/post-images/1579171473625.jpg" alt="" loading="lazy"><br>
-出现n 就是为了更好的方便计算，引入i,j是因为二维数组的下标。因为存储二维数组就是把二维数组中的元素存储到一维数组中，因此，i,j在公式中肯定是必不可少的。</p>
-<p>粗略见解，请多指教。</p>
+                <p>☀️☀️☀️</p>
+<h2 id="第三届蓝桥杯java组-最大数">第三届蓝桥杯Java组 最大数</h2>
+<h2 id="description">Description</h2>
+<p><strong>[12,127,85,66,27,34,15,344,156,344,29,47,....]</strong></p>
+<p>这是某设备测量到的工程数据。</p>
+<p>因工程要求，需要找出最大的5个值。</p>
+<p>一般的想法是对它排序，输出前5个。但当数据较多时，这样做很浪费时间。因为对输出数据以外的数据进行排序并非工程要求，即便是要输出的5个数字，也并不要求按大小顺序，只要找到5个就可以。</p>
+<!-- more -->
+<p>以下的代码采用了另外的<strong>思路</strong>。考虑如果<strong>手里 <em>已经</em> 抓着5个最大数</strong>，再来一个数据怎么办呢？让它和手里的数据比，如果比哪个大，就抢占它的座位，让那个被挤出来的再自己找位子,....</p>
+<p>请分析代码逻辑，并推测划线处的代码。</p>
+<p>注意：<strong>只写划线处应该填的内容，划线前后的内容不要抄写。</strong></p>
+<p>Input</p>
+<p>没有输入。</p>
+<p>Output</p>
+<p>填写适当代码替换横线，使得程序能输出序列中最大的5个值。</p>
+<h2 id="思路">思路</h2>
+<p>开始看到这个题，脑子里最先闪过的就是递归函数，刚开始我没有<br>
+发现这个递归函数是怎么递归的。<br>
+但结合题目中所说，考虑如果<strong>手里 <em>已经</em> 抓着5个最大数</strong> 这里应该先取出五个数，然后将剩余<strong>7</strong>个数 与 已经取出的<strong>5</strong>个数依次进行对比。</p>
+<blockquote>
+<p><strong>让它和手里的数据比，如果比哪个大，就抢占它的座位，让那个被挤出来的再自己找位子,....</strong><br>
+​</p>
+</blockquote>
+<p>好了现在我们开始看代码</p>
+<pre><code class="language-java">package Test;
+
+
+import java.util.*;
+public class Test_lanqiao
+{
+        public static List&lt;Integer&gt; max5(List&lt;Integer&gt; lst)
+    {
+        if(lst.size()&lt;=5) return lst;//返回到最近调用 lst 的地方 因此推出是第一个需要填空的地方
+        
+        int a = lst.remove(0);
+
+  // 填空
+        
+        List&lt;Integer&gt; b = max5(lst);// 递归函数
+
+        for(int i=0; i&lt;b.size(); i++)
+        {
+            int t = b.get(i);
+            
+            //下面的代码就是开始进行比较，
+            if(a&gt;t)
+            {
+                //将大的值替换到小的值的位置
+                Collections.replaceAll(b, t, a);// 填空
+                a = t;  //将小的值踢出，让他重新与别的值进行比较
+            }
+        }
+        
+        return b; //返回到最近调用 b 的地方 即List&lt;Integer&gt; b = max5(lst);// 递归函数
+处
+    }
+    
+    public static void main(String[] args)
+    {
+        List&lt;Integer&gt; lst = new Vector&lt;Integer&gt;();
+        lst.addAll(Arrays.asList(12,127,85,66,27,34,15,344,156,344,29,47));    
+    
+        System.out.println(max5(lst));
+        
+}
+</code></pre>
+<p>具体的可以在代码中增加几个 System.out.prinln();<br>
+可以打印，这样可以更加直观的看代码具体的功能</p>
+<blockquote>
+<p>Java list.remove( i )方法  删除具体位置的值<br>
+i 是移除 list 中具体位置下标</p>
+</blockquote>
+<blockquote>
+<p>b.get(i);方法  查看具体位置的值<br>
+i 是查看 b 中具体位置下标</p>
+</blockquote>
+<p>Collections.replaceAll() 的方法见下方link<br>
+<a href="https://blog.csdn.net/weixin_43866499/article/details/104430297">Java集合-Collections的replaceAll()方法</a></p>
 
               </div>
               <div class="post-footer">
@@ -323,7 +576,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://hudesee.github.io/post/san-jiao-ju-zhen-de-ya-suo-ju-zhen/" title="三角矩阵的压缩矩阵">三角矩阵的压缩矩阵</a>
+      <a href="https://hudesee.github.io/post/di-san-jie-lan-qiao-bei-java-zu-zui-da-shu/" title="第三届蓝桥杯Java组 最大数">第三届蓝桥杯Java组 最大数</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -336,12 +589,12 @@
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="黄金队列" href="https://hudesee.github.io/post/huang-jin-dui-lie/">黄金队列</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="黄金队列" href="https://hudesee.github.io/post/huang-jin-dui-lie/">上一篇</a>
-      
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="关于我" href="https://hudesee.github.io/post/guan-yu-wo/">关于我</a>
+        <a class="nav-mobile-next" title="关于我" href="https://hudesee.github.io/post/guan-yu-wo/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>
