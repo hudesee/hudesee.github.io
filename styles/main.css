@@ -1984,49 +1984,23 @@ body {
     .active-hidden > a {
       color: #fc6423;
       border-bottom-color: #fc6423;
-    }.site-meta {
-        background: transparent !important;
-        background-image: url(\media\images\custom-headerImg.jpg) !important;
-      }
+    }
       .site-meta {
         background: #000 !important;
       }
       .head-top-line {
         background: #000 !important;
-      }.sidebar {
-      background-image: url(\media\images\custom-siteMetaImg.jpg) !important;
-    }
-    .sidebar-item-box a {
-      color: #eee;
-    }
-    .friends-title {
-      color: #eee;
-      border-top: 1px dotted #fff;
-    }
-    .friends-box a {
-      color: #eee;
-      border-bottom: 1px solid #eee;
-    }
-    .toc-wrapper a {
-      color: #eee;
-      border-bottom: 1px solid #eee;
-    }
-    .sidebar-title-item {
-      color: #eee;
-    }
-    
+      }
     .brand {
       background: #000;
     }
-    
-      .brand {
-        font-weight: bold;
-        transform: scale([1,3]);
-      }.main-title {
+    .main-title {
       color: #FFF;
     }
     .mist .site-title i {
       background: #FFF;
+    }.box-scale > #landlord {
+      transform: scale([0,1]);
     }.box-shadow-wrapper {
       padding: 10px;
     }.box-shadow-wrapper {
