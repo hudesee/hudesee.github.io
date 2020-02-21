@@ -7,7 +7,7 @@
 <meta name="description" content="胡嘚瑟的个人博客">
 <meta name="theme-color" content="#000">
 <title>关于我 | hudese</title>
-<link rel="shortcut icon" href="https://hudesee.github.io/favicon.ico?v=1582258713652">
+<link rel="shortcut icon" href="https://hudesee.github.io/favicon.ico?v=1582259151496">
 <link rel="stylesheet" href="https://hudesee.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -146,7 +146,7 @@
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="https://hudesee.github.io/images/avatar.png"/>
     <p class="site-author-name">hudese</p>
-    <p class="site-description right-motion">这个人很懒，什么都不想写...</p>
+    <p class="site-description right-motion">一个喜欢记录生活的胡同学~ </p>
   </div>
   <div class="sidebar-item side-item-stat right-motion">
     <div class="sidebar-item-box">
@@ -179,13 +179,20 @@
     <div class="sidebar-item sidebar-item-social">
       <div class="social-item">
         
-        
           
-            <a class="social-img" href="#">
-              <img src="" />
+            <a href="">
               <i class="fa fa-wechat"></i> 
             </a>
           
+            <a href="">
+              <i class="fa github-alt"></i> 
+            </a>
+          
+            <a href="">
+              <i class="fa fa-qq"></i> 
+            </a>
+          
+        
         
       </div>
     </div>
@@ -581,7 +588,7 @@ window.addEventListener('load', function() {
       <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
       <input id="duType" value="douqilai" type="hidden">
       
-        <input name="live2dBGM" value="http://www.kuwo.cn/yinyue/15213376" type="hidden">
+        <input name="live2dBGM" value="http://www.kuwo.cn/yinyue/51573352" type="hidden">
       
     </div>
   </div>
@@ -596,6 +603,45 @@ var apiKey = landlord.dataset.key;
 <script type="text/javascript" src="/media/live2d/histoire/js/live2d.js"></script>
 <script type="text/javascript" src="/media/live2d/histoire/js/message.js"></script>
   
+  
+    
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+  <div class="aplayer" id="aplayer"></div>
+  <input hidden id="player_cover" value="" />
+  <div class="music-list">
+  
+    
+    <input hidden value="i really like you ,Anthem Lights,http://www.kuwo.cn/yinyue/51573352," />
+  
+  </div>
+  <script>
+  let musics = document.querySelector('.music-list').children;
+  let mediaMusic = [];
+  let cover = document.querySelector('#player_cover').value;
+  for (let i = 0; i < musics.length; i++) {
+    let item = musics[i];
+    let splits = item.value.split(',');
+    mediaMusic.push({
+      name: splits[0],
+      artist: splits[1],
+      url: splits[2],
+      lrc: splits[3],
+      cover: cover
+    });
+  }
+  console.log(mediaMusic);
+  const ap = new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      lrcType: 3,
+      listFolded: false,
+      listMaxHeight: 90,
+      audio: mediaMusic
+  });
+  </script>
+
+
   
 </div>
 <script>
