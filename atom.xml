@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hudesee.github.io</id>
     <title>hudese</title>
-    <updated>2020-03-01T03:12:41.654Z</updated>
+    <updated>2020-03-01T03:14:32.013Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hudesee.github.io"/>
     <link rel="self" href="https://hudesee.github.io/atom.xml"/>
@@ -16,9 +16,11 @@
         <link href="https://hudesee.github.io/post/ge-ren-sui-bi-2/">
         </link>
         <updated>2020-03-01T03:07:41.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>![](https://hudesee.github.io/post-images/1583032271003.jpg)
-《西西里的美丽传说》是由朱塞佩·托纳多雷执导，莫尼卡·贝鲁奇、圭塞佩·苏尔法罗等主演的剧情片，于2000年10月27日在意大利上映。该片通过少年雷纳多的视角，讲述了二战时期的意大利西西里岛上的美丽少妇玛琳娜的故事。
-</code></pre>
+        <summary type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://hudesee.github.io/post-images/1583032271003.jpg" alt="" loading="lazy"></figure>
+]]></summary>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://hudesee.github.io/post-images/1583032271003.jpg" alt="" loading="lazy"></figure>
+<!-- more -->
+<p>《西西里的美丽传说》是由朱塞佩·托纳多雷执导，莫尼卡·贝鲁奇、圭塞佩·苏尔法罗等主演的剧情片，于2000年10月27日在意大利上映。该片通过少年雷纳多的视角，讲述了二战时期的意大利西西里岛上的美丽少妇玛琳娜的故事。</p>
 <p>电影开头，看到了一个少年拥有了一个自己的脚踏车。随后去加入了小伙伴们的队伍。然后就这样，他看到了让自己终生难忘的人——玛莲娜 。一个美丽动人的女人，让西西里岛上任何男人都神魂颠倒的女性。正值青春期的少年——雷纳多 ，不觉间被这个美丽女性吸引了。</p>
 <p>自此，这个少年梦里都是他的女神。他幻想着拥有她，可是一次又一次的被现实打败。他是个穿着短裤的孩子，而玛莲娜是个有夫之妇。这些都在宣告，他们之间不可能。在之后的一段时间里，他只能远远的看着她。</p>
 <p>不久后，前线传来消息，玛莲娜的丈夫牺牲了。这个时候，小镇上的男人都开始蠢蠢欲动。雷纳多为了保护他的女神，一直在以自己的方式去保护着她。</p>
